@@ -1,8 +1,8 @@
-## Personal Data Examination
+# Personal Data Examination
 
 In 2018 California passed the CCPA (California Consumer Protection Act) which requires companies to provide consumers with a copy of the data that the company is storing about the consumer. In this project I requested my data from Facebook, Google, Apple, and Twitter and I took a look at what's there. I tell myself that the primary purpose of being on these platforms is to stay in touch with certain social groups. My goal is to examine the data and find out if that's true.
 
-# The Data
+## The Data
 
 Google quickly produced a 4.6GB mbox archive that contained 60,028 emails. We can import the entire library into python with just 2 lines of code. The sheer volume of this data makes it less appealing for a more in depth analysis.
 ```python
@@ -28,20 +28,6 @@ def find_message_json(directory):
         with open(os.getcwd()+'/message_1.json') as f:
             d = json.load(f)
             all_msgs_arr.append(d)
-    except IOError:
-        print('no message_1.json file found')
-    try:
-        with open(os.getcwd()+'/message_2.json') as f:
-            d = json.load(f)
-            all_msgs_arr.append(d)
-            print("found a message_2.json file")
-    except IOError:
-        print("this is a do something placeholder")
-    try:
-        with open(os.getcwd()+'/message_3.json') as f:
-            d = json.load(f)
-            all_msgs_arr.append(d)
-            print("found a message_3.json file")
     except IOError:
         pass
 
@@ -70,5 +56,7 @@ tweets_df['retweet_count'] = tweets_df['tweet'].map(lambda x : x['retweet_count'
 tweets_df['created_at'] = tweets_df['tweet'].map(lambda x : pd.to_datetime(x['created_at']))
 ```
 
-# The Exploration
+## The Exploration
 
+I am curious what I can learn about myself from my information. So, Let's take a look at the frequency of my Twitter activity.
+![tweet_rate](images/Tweet_rate1.png)
